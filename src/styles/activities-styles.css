@@ -1,0 +1,37 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  padding: 0 20px;
+  color: #fff;
+}
+
+.activities h2 {
+  color: #342134;
+}
+
+.activity {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 0;
+  padding: 8px 40px;
+  background-color: #4c2b4c;
+  border-radius: 10px;
+}
+
+.activity a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.activity .right {
+  margin-left: auto;
+  margin-right: 40px;
+}
+
+.btn-delete {
+  background-color: #4c2b4c;
+  border: none;
+  color: #fc5c5c;
+  cursor: pointer;
+}
