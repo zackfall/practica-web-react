@@ -1,37 +1,132 @@
 .container {
   display: flex;
   flex-direction: column;
-  padding: 0 20px;
+  padding: 20px 40px;
   color: #fff;
+  align-items: flex-start;
+  width: 100%;
+  max-width: none;
+}
+
+.activities {
+  width: 100%;
+  margin-bottom: 40px;
 }
 
 .activities h2 {
   color: #342134;
+  margin-bottom: 20px;
+  font-size: 1.8rem;
 }
 
 .activity {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 20px 0;
-  padding: 8px 40px;
+  margin: 15px 0;
+  padding: 20px 40px;
   background-color: #4c2b4c;
-  border-radius: 10px;
+  border-radius: 12px;
+  width: 95%;
+  min-height: 80px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.activity:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.activity .left {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+
+.activity .left p {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.activity .left p:first-child {
+  font-weight: 600;
+  font-size: 1.2rem;
 }
 
 .activity a {
   color: #fff;
   text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.activity a:hover {
+  color: #ff8c8c;
+  text-decoration: underline;
 }
 
 .activity .right {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
   margin-left: auto;
-  margin-right: 40px;
+  margin-right: 20px;
+  text-align: right;
+  min-width: 200px;
+}
+
+.activity .right p {
+  margin: 0;
+  font-size: 1rem;
+  color: #e0e0e0;
 }
 
 .btn-delete {
-  background-color: #4c2b4c;
+  background-color: transparent;
   border: none;
   color: #fc5c5c;
   cursor: pointer;
+  padding: 8px;
+  border-radius: 6px;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-delete:hover {
+  background-color: rgba(252, 92, 92, 0.1);
+  transform: scale(1.1);
+}
+
+.btn-delete svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .container {
+    padding: 15px 20px;
+  }
+
+  .activity {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 15px 20px;
+    gap: 15px;
+  }
+
+  .activity .right {
+    margin-left: 0;
+    margin-right: 0;
+    text-align: left;
+    min-width: auto;
+    width: 100%;
+  }
+
+  .btn-delete {
+    align-self: flex-end;
+  }
 }

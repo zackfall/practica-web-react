@@ -33,12 +33,12 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/login" element={<Login />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Dashboard />} />
           <Route path="actividades" element={<Activities />} />
           <Route path="crear-actividad" element={<CreateActivity />} />
           <Route path="editar-actividad" element={<EditActivity />} />
+          <Route path="/login" element={<Login />} />
         </Route>
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>

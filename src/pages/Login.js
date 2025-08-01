@@ -96,95 +96,98 @@ const Login = () => {
 
   return (
     <div className={`container ${isToggled ? "toggle" : ""}`}>
-      {/* Login Form */}
-      <div className="container-form">
-        <form className="inicio-session" onSubmit={handleLoginSubmit}>
-          <h2>Inicio</h2>
-          <span>Ingrese su correo y contraseña para ingresar</span>
-          <div className="container-input">
-            <input
-              type="text"
-              placeholder="Correo Electrónico"
-              value={loginForm.email}
-              onChange={(e) => setLoginForm({ ...loginForm, email: e.target.value })}
-            />
-          </div>
-          <div className="container-input">
-            <input
-              type="password"
-              placeholder="Contraseña"
-              value={loginForm.password}
-              onChange={(e) => setLoginForm({ ...loginForm, password: e.target.value })}
-            />
-          </div>
-          <a href="#">¿Olvidaste tu contraseña?</a>
-          <button className="button" type="submit">
-            Inicio
-          </button>
-        </form>
-      </div>
-
-      {/* Register Form */}
-      <div className="container-form">
-        <form className="registro" onSubmit={handleRegisterSubmit}>
-          <h2>Registro</h2>
-          <span>Ingrese sus datos</span>
-          <div className="container-input">
-            <input
-              type="text"
-              placeholder="Nombre"
-              value={registerForm.nombre}
-              onChange={(e) => setRegisterForm({ ...registerForm, nombre: e.target.value })}
-            />
-            {errors.nombre && <span className="error">{errors.nombre}</span>}
-          </div>
-          <div className="container-input">
-            <input
-              type="text"
-              placeholder="Correo Electrónico"
-              value={registerForm.email}
-              onChange={(e) => setRegisterForm({ ...registerForm, email: e.target.value })}
-            />
-            {errors.email && <span className="error">{errors.email}</span>}
-          </div>
-          <div className="container-input">
-            <input
-              type="password"
-              placeholder="Contraseña"
-              value={registerForm.password}
-              onChange={handlePasswordChange}
-            />
-            <div className="strength-container">
-              <div
-                className="strength-bar"
-                style={{
-                  width: `${passwordStrength * 20}%`,
-                  backgroundColor: getStrengthColor(),
-                }}
+      {/* Forms Container - Fixed position */}
+      <div className="forms-container">
+        {/* Login Form */}
+        <div className={`container-form ${!isToggled ? "active" : ""}`}>
+          <form className="inicio-session" onSubmit={handleLoginSubmit}>
+            <h2>Inicio</h2>
+            <span>Ingrese su correo y contraseña para ingresar</span>
+            <div className="container-input">
+              <input
+                type="text"
+                placeholder="Correo Electrónico"
+                value={loginForm.email}
+                onChange={(e) => setLoginForm({ ...loginForm, email: e.target.value })}
               />
             </div>
-            <span id="strengthText">{getStrengthText()}</span>
-            {errors.password && <span className="error">{errors.password}</span>}
-          </div>
-          <div className="container-input">
-            <input
-              type="password"
-              placeholder="Confirma tu contraseña"
-              value={registerForm.confirmPassword}
-              onChange={(e) => setRegisterForm({ ...registerForm, confirmPassword: e.target.value })}
-            />
-            {errors.confirmPassword && <span className="error">{errors.confirmPassword}</span>}
-          </div>
-          <button className="button" type="submit">
-            Registrarse
-          </button>
-          {errors.form && <span className="error">{errors.form}</span>}
-        </form>
+            <div className="container-input">
+              <input
+                type="password"
+                placeholder="Contraseña"
+                value={loginForm.password}
+                onChange={(e) => setLoginForm({ ...loginForm, password: e.target.value })}
+              />
+            </div>
+            <a href="#">¿Olvidaste tu contraseña?</a>
+            <button className="button" type="submit">
+              Inicio
+            </button>
+          </form>
+        </div>
+
+        {/* Register Form */}
+        <div className={`container-form ${isToggled ? "active" : ""}`}>
+          <form className="registro" onSubmit={handleRegisterSubmit}>
+            <h2>Registro</h2>
+            <span>Ingrese sus datos</span>
+            <div className="container-input">
+              <input
+                type="text"
+                placeholder="Nombre"
+                value={registerForm.nombre}
+                onChange={(e) => setRegisterForm({ ...registerForm, nombre: e.target.value })}
+              />
+              {errors.nombre && <span className="error">{errors.nombre}</span>}
+            </div>
+            <div className="container-input">
+              <input
+                type="text"
+                placeholder="Correo Electrónico"
+                value={registerForm.email}
+                onChange={(e) => setRegisterForm({ ...registerForm, email: e.target.value })}
+              />
+              {errors.email && <span className="error">{errors.email}</span>}
+            </div>
+            <div className="container-input">
+              <input
+                type="password"
+                placeholder="Contraseña"
+                value={registerForm.password}
+                onChange={handlePasswordChange}
+              />
+              <div className="strength-container">
+                <div
+                  className="strength-bar"
+                  style={{
+                    width: `${passwordStrength * 20}%`,
+                    backgroundColor: getStrengthColor(),
+                  }}
+                />
+              </div>
+              <span id="strengthText">{getStrengthText()}</span>
+              {errors.password && <span className="error">{errors.password}</span>}
+            </div>
+            <div className="container-input">
+              <input
+                type="password"
+                placeholder="Confirma tu contraseña"
+                value={registerForm.confirmPassword}
+                onChange={(e) => setRegisterForm({ ...registerForm, confirmPassword: e.target.value })}
+              />
+              {errors.confirmPassword && <span className="error">{errors.confirmPassword}</span>}
+            </div>
+            <button className="button" type="submit">
+              Registrarse
+            </button>
+            {errors.form && <span className="error">{errors.form}</span>}
+          </form>
+        </div>
       </div>
 
-      {/* Welcome Panel */}
+      {/* Welcome Panel - This moves */}
       <div className="container-bienvenido">
-        <div className={`bienvenido-sign-up bienvenido ${isToggled ? "" : "active"}`}>
+        <div className={`bienvenido-sign-up bienvenido ${!isToggled ? "active" : ""}`}>
           <h3>¡Bienvenido!</h3>
           <p>Ingrese sus datos personales para iniciar sesión</p>
           <button className="button" onClick={() => setIsToggled(true)}>
